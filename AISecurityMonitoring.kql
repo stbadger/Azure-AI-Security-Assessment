@@ -1,0 +1,8 @@
+Resources
+| where type contains "searchservice" or type == "microsoft.documentdb/databaseaccounts" or type == "microsoft.cognitiveservices/accounts" and kind == "AIServices" or kind == "OpenAI"
+| project name, type, kind, location, resourceGroup, subscriptionId,
+diagnosticSettings = "",
+LogAnalyticsworkspace = "",
+CSPM = "",
+AIThreatProtection = "",
+DefenderforCosmosDB = ""
