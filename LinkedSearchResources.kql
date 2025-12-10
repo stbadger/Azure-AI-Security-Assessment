@@ -1,0 +1,8 @@
+Resources
+| where type contains "searchservice"
+| mv-expand privateLinkResources = properties.sharedPrivateLinkResources
+| extend linkedResource = tostring(split(privateLinkResources.properties.privateLinkResourceId, "/")[-1])
+| project name, type, location, resourceGroup, subscriptionId, linkedResource,
+groupId = privateLinkResources.properties.groupId,
+provisioningstate = privateLinkResources.properties.provisioningState,
+status = privateLinkResources.properties.status
